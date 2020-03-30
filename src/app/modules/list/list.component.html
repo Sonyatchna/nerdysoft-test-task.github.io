@@ -1,0 +1,18 @@
+<div class="main-div">
+
+  <div class="header-div">
+    <button class="header-div-button" (click)="logout()">Log Out</button>
+    <button class="header-div-button" (click)="openAddTaskModal()">Add new task</button>
+  </div>
+
+  <div *ngIf="tasks?.length; else noLessonText" class="content-div">
+    <div *ngFor="let task of tasks">
+      <app-list-item [task]="task"></app-list-item>
+    </div>
+  </div>
+
+  <ng-template #noLessonText class="content-div">
+    <div class="no-task-div">You haven't added anything yet</div>
+  </ng-template>
+
+</div>

@@ -1,0 +1,40 @@
+<div class="main-div">
+  <mat-card class="card-container">
+
+    <mat-card-title class="card-title">
+      <span>Log In</span>
+    </mat-card-title>
+
+    <mat-card-content class="card-content">
+      <form [formGroup]="loginForm" class="form-div">
+
+        <mat-form-field class="login-input">
+          <input matInput placeholder="Email" formControlName="email">
+          <mat-error *ngIf="loginForm.get('email').invalid && (loginForm.get('email').dirty || loginForm.get('email').touched)">
+            <mat-error *ngIf="loginForm.get('email').errors.required" class="error-form-message">Email is required!</mat-error>
+            <mat-error *ngIf="loginForm.get('email').errors.pattern" class="error-form-message">Incorrect form of email!</mat-error>
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="password-input">
+          <input matInput placeholder="Password" formControlName="password" [type]="showPassword ? 'text' : 'password'">
+          <mat-icon matSuffix (click)="showPassword = !showPassword; $event.stopPropagation()">{{ showPassword ? 'visibility' : 'visibility_off' }}</mat-icon>
+          <mat-error *ngIf="loginForm.get('password').invalid && (loginForm.get('password').dirty || loginForm.get('password').touched)">
+            <mat-error *ngIf="loginForm.get('password').errors.required" class="error-form-message">Password is required!</mat-error>
+            <mat-error *ngIf="loginForm.get('password').errors.minlength" class="error-form-message">Password must be longer than 5!</mat-error>
+            <mat-error *ngIf="loginForm.get('password').errors.maxlength" class="error-form-message">Password must be shorter than 17!</mat-error>
+          </mat-error>
+        </mat-form-field>
+
+      </form>
+    </mat-card-content>
+
+    <mat-card-actions class="card-actions">
+      <div class="log-in-button-wrapper">
+        <button mat-stroked-button color="primary" class="btn-register" [routerLink]="['../register']">Sign Up</button>
+        <button mat-flat-button color="primary" class="btn-login" type="submit" [disabled]="!loginForm.valid" (click)="login()">Log In</button>
+      </div>
+    </mat-card-actions>
+
+  </mat-card>
+</div>

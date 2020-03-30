@@ -1,0 +1,19 @@
+<div class="task-list-item">
+
+  <div class="main-info">
+    <div class="task-name">
+      {{task.name}}
+    </div>
+
+    <div *ngIf="ownerEmail" class="additional-text">
+      Shared from {{ownerEmail}}
+    </div>
+  </div>
+
+  <div class="buttons">
+    <button class="buttons-item" (click)="shareTask()">Share</button>
+    <button class="buttons-item" (click)="editTask(task)">Edit</button>
+    <button class="buttons-item" (click)="deleteTask(task.id)">Delete</button>
+  </div>
+
+</div>

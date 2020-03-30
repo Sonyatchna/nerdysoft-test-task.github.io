@@ -1,0 +1,23 @@
+<div class="modal-container">
+
+    <div class="modal-header">
+      Share task
+    </div>
+
+    <div class="modal-content">
+      <mat-form-field>
+        <mat-label>User email</mat-label>
+        <mat-select [(ngModel)]="selectedEmail">
+          <mat-option *ngFor="let user of users" [value]="user.email">
+            {{user.email}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div class="modal-buttons">
+      <button class="modal-buttons-item" (click)="closeModal()">Close</button>
+      <button class="modal-buttons-item" (click)="shareTask(task, selectedEmail)">Share task</button>
+    </div>
+
+</div>
